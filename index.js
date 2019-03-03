@@ -2,7 +2,6 @@
  * A Bot for Slack!
  */
 
-
 /**
  * Define a function for initiating a conversation on installation
  * With custom integrations, we don't have a way to find out who installed us, so we can't message them :(
@@ -85,24 +84,154 @@ controller.on('bot_channel_join', function (bot, message) {
     bot.reply(message, "I'm here!")
 });
 
-controller.hears('hello', 'direct_message,mention,direct_mention', function (bot, message) {
+
+
+
+controller.hears('look sad', 'direct_message,mention,direct_mention', function (bot, message) {
+    bot.reply(message, {
+      "text": "",
+      "attachments": [
+    {
+        "fields": [],
+        "image_url": "https://user-images.githubusercontent.com/10780489/53689635-24fc2000-3d28-11e9-81f6-0e4a80baa428.png"
+    },
+]
+});
+});
+
+controller.hears('look happy', 'direct_message,mention,direct_mention', function (bot, message) {
+    bot.reply(message, {
+      "text": "",
+      "attachments": [
+    {
+        "fields": [],
+        "image_url": "https://user-images.githubusercontent.com/10780489/53689637-29283d80-3d28-11e9-9c93-cdbccf3c6f8e.png"
+    },
+]
+});
+});
+
+controller.hears('look excited', 'direct_message,mention,direct_mention', function (bot, message) {
+    bot.reply(message, {
+      "text": "",
+      "attachments": [
+    {
+        "fields": [],
+        "image_url": "https://user-images.githubusercontent.com/10780489/53689637-29283d80-3d28-11e9-9c93-cdbccf3c6f8e.png"
+    },
+]
+});
+});
+
+controller.hears('look angry', 'direct_message,mention,direct_mention', function (bot, message) {
+    bot.reply(message, {
+      "text": "",
+      "attachments": [
+    {
+        "fields": [],
+        "image_url": "https://user-images.githubusercontent.com/10780489/53689634-24fc2000-3d28-11e9-9363-d5c5728128f6.png"
+    },
+]
+});
+});
+
+controller.hears('look dissapointed', 'direct_message,mention,direct_mention', function (bot, message) {
+    bot.reply(message, {
+      "text": "",
+      "attachments": [
+    {
+        "fields": [],
+        "image_url": "https://user-images.githubusercontent.com/10780489/53689636-24fc2000-3d28-11e9-9ce3-dec3c8b116b2.png"
+    },
+]
+});
+});
+
+controller.hears('look tired', 'direct_message,mention,direct_mention', function (bot, message) {
+    bot.reply(message, {
+      "text": "",
+      "attachments": [
+    {
+        "fields": [],
+        "image_url": "https://user-images.githubusercontent.com/10780489/53689633-24fc2000-3d28-11e9-93e8-9e7bc368f0a6.png"
+    },
+]
+});
+});
+
+controller.hears('look ok', 'direct_message,mention,direct_mention', function (bot, message) {
+    bot.reply(message, {
+      "text": "",
+      "attachments": [
+    {
+        "fields": [],
+        "image_url": "https://user-images.githubusercontent.com/10780489/53689633-24fc2000-3d28-11e9-93e8-9e7bc368f0a6.png"
+    },
+]
+});
+});
+
+controller.hears('look fine', 'direct_message,mention,direct_mention', function (bot, message) {
+    bot.reply(message, {
+      "text": "",
+      "attachments": [
+    {
+        "fields": [],
+        "image_url": "https://user-images.githubusercontent.com/10780489/53689633-24fc2000-3d28-11e9-93e8-9e7bc368f0a6.png"
+    },
+]
+});
+});
+
+controller.hears('look scared', 'direct_message,mention,direct_mention', function (bot, message) {
+    bot.reply(message, {
+      "text": "",
+      "attachments": [
+    {
+        "fields": [],
+        "image_url": "https://user-images.githubusercontent.com/10780489/53689636-24fc2000-3d28-11e9-9ce3-dec3c8b116b2.png"
+    },
+]
+});
+});
+
+controller.hears('look bored', 'direct_message,mention,direct_mention', function (bot, message) {
+    bot.reply(message, {
+      "text": "",
+      "attachments": [
+    {
+        "fields": [],
+        "image_url": "https://user-images.githubusercontent.com/10780489/53689636-24fc2000-3d28-11e9-9ce3-dec3c8b116b2.png"
+    },
+]
+});
+});
+
+controller.hears('look hello', 'direct_message,mention,direct_mention', function (bot, message) {
     bot.reply(message, 'Hello!');
 });
 
+controller.hears('Whose a good boy?', 'mention,direct_mention,direct_message', function (bot, message) {
+    bot.reply(message, 'Woof!');
+});
+
+// controller.hears('go', 'direct_message', function (bot, message) {
+//     bot.reply(message, '/remind @rafaelzingle hi at 4:08PM');
+// });
 
 /**
  * AN example of what could be:
  * Any un-handled direct mention gets a reaction and a pat response!
  */
-controller.on('direct_message,mention,direct_mention', function (bot, message) {
+controller.hears('go', 'direct_message,mention,direct_mention', function (bot, message) {
     bot.api.reactions.add({
         timestamp: message.ts,
         channel: message.channel,
-        name: 'robot_face',
+        name: 'robot_face'
     }, function (err) {
         if (err) {
             console.log(err)
         }
-        bot.reply(message, 'I heard you loud and clear boss.');
-    });
+        bot.reply(message, "Hi!!!!!");
+  });
 });
