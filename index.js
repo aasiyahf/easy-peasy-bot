@@ -2,6 +2,29 @@
  * A Bot for Slack!
  */
 
+/*
+* A list of AarfDog icons
+*/
+var sadDog = "https://user-images.githubusercontent.com/10780489/53689635-24fc2000-3d28-11e9-81f6-0e4a80baa428.png";
+var happyDog = "https://user-images.githubusercontent.com/10780489/53689637-29283d80-3d28-11e9-9c93-cdbccf3c6f8e.png";
+var madDog = "https://user-images.githubusercontent.com/10780489/53689634-24fc2000-3d28-11e9-9363-d5c5728128f6.png";
+var tiredDog = "https://user-images.githubusercontent.com/10780489/53689633-24fc2000-3d28-11e9-93e8-9e7bc368f0a6.png";
+var scaredDog = "https://user-images.githubusercontent.com/10780489/53689636-24fc2000-3d28-11e9-9ce3-dec3c8b116b2.png";
+
+/*
+* Lists with different pictures for each emotion
+*/
+var sad = ["",
+""];
+var happy = ["",
+""];
+var mad = ["",
+""];
+var tired = ["",
+""];
+var scared = ["",
+""];
+
 /**
  * Define a function for initiating a conversation on installation
  * With custom integrations, we don't have a way to find out who installed us, so we can't message them :(
@@ -74,7 +97,6 @@ controller.on('rtm_close', function (bot) {
     // you may want to attempt to re-open
 });
 
-
 /**
  * Core bot logic goes here!
  */
@@ -84,140 +106,106 @@ controller.on('bot_channel_join', function (bot, message) {
     bot.reply(message, "I'm here!")
 });
 
+/*
+* List of dog icons
+*/
+var icons = [sadDog, happyDog, madDog, tiredDog, scaredDog];
 
+/*
+* Function to pick a random number
+*/
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 
+/*
+* Function to return a random dog icon
+*/
+controller.hears('how are you?', 'direct_mention,direct_message,mention', function (bot, message) {
+  var icon = getRandomInt(icons.length);
+  bot.reply(message, {
+    "text": "",
+    "attachments": [
+      {
+        "fields": [],
+        "image_url": icons[icon]
+      }
+    ]
+  })
+});
 
-controller.hears('look sad', 'direct_message,mention,direct_mention', function (bot, message) {
+controller.hears('sad', 'direct_message,mention,direct_mention', function (bot, message) {
+  var pic = getRandomInt(sad.length);
     bot.reply(message, {
       "text": "",
       "attachments": [
     {
         "fields": [],
-        "image_url": "https://user-images.githubusercontent.com/10780489/53689635-24fc2000-3d28-11e9-81f6-0e4a80baa428.png"
+        "image_url": sad[pic]
     },
 ]
 });
 });
 
-controller.hears('look happy', 'direct_message,mention,direct_mention', function (bot, message) {
+controller.hears('happy', 'direct_message,mention,direct_mention', function (bot, message) {
+    var pic = getRandomInt(happy.length);
     bot.reply(message, {
       "text": "",
       "attachments": [
     {
         "fields": [],
-        "image_url": "https://user-images.githubusercontent.com/10780489/53689637-29283d80-3d28-11e9-9c93-cdbccf3c6f8e.png"
+        "image_url": happy[pic]
     },
 ]
 });
 });
 
-controller.hears('look excited', 'direct_message,mention,direct_mention', function (bot, message) {
+controller.hears('angry', 'direct_message,mention,direct_mention', function (bot, message) {
+  var pic = getRandomInt(angry.length);
     bot.reply(message, {
       "text": "",
       "attachments": [
     {
         "fields": [],
-        "image_url": "https://user-images.githubusercontent.com/10780489/53689637-29283d80-3d28-11e9-9c93-cdbccf3c6f8e.png"
+        "image_url": angry[pic]
     },
 ]
 });
 });
 
-controller.hears('look angry', 'direct_message,mention,direct_mention', function (bot, message) {
+controller.hears('tired', 'direct_message,mention,direct_mention', function (bot, message) {
+  var pic = getRandomInt(tired.length);
     bot.reply(message, {
       "text": "",
       "attachments": [
     {
         "fields": [],
-        "image_url": "https://user-images.githubusercontent.com/10780489/53689634-24fc2000-3d28-11e9-9363-d5c5728128f6.png"
+        "image_url": tired[pic]
     },
 ]
 });
 });
 
-controller.hears('look dissapointed', 'direct_message,mention,direct_mention', function (bot, message) {
+controller.hears('scared', 'direct_message,mention,direct_mention', function (bot, message) {
+  var pic = getRandomInt(scared.length);
     bot.reply(message, {
       "text": "",
       "attachments": [
     {
         "fields": [],
-        "image_url": "https://user-images.githubusercontent.com/10780489/53689636-24fc2000-3d28-11e9-9ce3-dec3c8b116b2.png"
+        "image_url": scared[pic]
     },
 ]
 });
 });
 
-controller.hears('look tired', 'direct_message,mention,direct_mention', function (bot, message) {
-    bot.reply(message, {
-      "text": "",
-      "attachments": [
-    {
-        "fields": [],
-        "image_url": "https://user-images.githubusercontent.com/10780489/53689633-24fc2000-3d28-11e9-93e8-9e7bc368f0a6.png"
-    },
-]
-});
-});
-
-controller.hears('look ok', 'direct_message,mention,direct_mention', function (bot, message) {
-    bot.reply(message, {
-      "text": "",
-      "attachments": [
-    {
-        "fields": [],
-        "image_url": "https://user-images.githubusercontent.com/10780489/53689633-24fc2000-3d28-11e9-93e8-9e7bc368f0a6.png"
-    },
-]
-});
-});
-
-controller.hears('look fine', 'direct_message,mention,direct_mention', function (bot, message) {
-    bot.reply(message, {
-      "text": "",
-      "attachments": [
-    {
-        "fields": [],
-        "image_url": "https://user-images.githubusercontent.com/10780489/53689633-24fc2000-3d28-11e9-93e8-9e7bc368f0a6.png"
-    },
-]
-});
-});
-
-controller.hears('look scared', 'direct_message,mention,direct_mention', function (bot, message) {
-    bot.reply(message, {
-      "text": "",
-      "attachments": [
-    {
-        "fields": [],
-        "image_url": "https://user-images.githubusercontent.com/10780489/53689636-24fc2000-3d28-11e9-9ce3-dec3c8b116b2.png"
-    },
-]
-});
-});
-
-controller.hears('look bored', 'direct_message,mention,direct_mention', function (bot, message) {
-    bot.reply(message, {
-      "text": "",
-      "attachments": [
-    {
-        "fields": [],
-        "image_url": "https://user-images.githubusercontent.com/10780489/53689636-24fc2000-3d28-11e9-9ce3-dec3c8b116b2.png"
-    },
-]
-});
-});
-
-controller.hears('look hello', 'direct_message,mention,direct_mention', function (bot, message) {
+controller.hears('hello', 'direct_message,mention,direct_mention', function (bot, message) {
     bot.reply(message, 'Hello!');
 });
 
 controller.hears('Whose a good boy?', 'mention,direct_mention,direct_message', function (bot, message) {
     bot.reply(message, 'Woof!');
 });
-
-// controller.hears('go', 'direct_message', function (bot, message) {
-//     bot.reply(message, '/remind @rafaelzingle hi at 4:08PM');
-// });
 
 /**
  * AN example of what could be:
