@@ -131,7 +131,7 @@ controller.hears(['how are you?', 'How are you?'], 'direct_mention,direct_messag
   })
 });
 
-controller.hears('sad', 'direct_message,mention,direct_mention', function (bot, message) {
+controller.hears(['sad', 'Sad'], 'direct_message,mention,direct_mention', function (bot, message) {
   var pic = getRandomInt(sad.length);
     bot.reply(message, {
       "text": "",
@@ -144,7 +144,7 @@ controller.hears('sad', 'direct_message,mention,direct_mention', function (bot, 
 });
 });
 
-controller.hears('happy', 'direct_message,mention,direct_mention', function (bot, message) {
+controller.hears(['happy', 'Happy', 'excited', 'Excited'], 'direct_message,mention,direct_mention', function (bot, message) {
     var pic = getRandomInt(happy.length);
     bot.reply(message, {
       "text": "",
@@ -157,7 +157,7 @@ controller.hears('happy', 'direct_message,mention,direct_mention', function (bot
 });
 });
 
-controller.hears('mad', 'direct_message,mention,direct_mention', function (bot, message) {
+controller.hears(['mad', 'Mad', 'angry', 'Angry'], 'direct_message,mention,direct_mention', function (bot, message) {
   var pic = getRandomInt(mad.length);
     bot.reply(message, {
       "text": "",
@@ -170,7 +170,7 @@ controller.hears('mad', 'direct_message,mention,direct_mention', function (bot, 
 });
 });
 
-controller.hears('tired', 'direct_message,mention,direct_mention', function (bot, message) {
+controller.hears(['tired', 'Tired', 'sleepy', 'Sleepy'], 'direct_message,mention,direct_mention', function (bot, message) {
   var pic = getRandomInt(tired.length);
     bot.reply(message, {
       "text": "",
@@ -183,7 +183,7 @@ controller.hears('tired', 'direct_message,mention,direct_mention', function (bot
 });
 });
 
-controller.hears('scared', 'direct_message,mention,direct_mention', function (bot, message) {
+controller.hears(['scared', 'Scared', 'frightened', 'Frightened'], 'direct_message,mention,direct_mention', function (bot, message) {
   var pic = getRandomInt(scared.length);
     bot.reply(message, {
       "text": "",
