@@ -14,16 +14,15 @@ var scaredDog = "https://user-images.githubusercontent.com/10780489/53689636-24f
 /*
 * Lists with different pictures for each emotion
 */
-var sad = ["",
-""];
-var happy = ["",
-""];
-var mad = ["",
-""];
-var tired = ["",
-""];
-var scared = ["",
-""];
+var sad = ["https://user-images.githubusercontent.com/10780489/53698362-b2338900-3da9-11e9-9b7c-efbf5f1c3bfd.gif"];
+var happy = ["https://user-images.githubusercontent.com/10780489/53698359-a47e0380-3da9-11e9-9e4e-03200a4d0a82.gif",
+"https://user-images.githubusercontent.com/10780489/53698360-a47e0380-3da9-11e9-94e8-b8f8fc3d7223.gif",
+"https://user-images.githubusercontent.com/10780489/53698361-a47e0380-3da9-11e9-9fdf-cf1998cacc02.gif"];
+var mad = ["https://user-images.githubusercontent.com/10780489/53698363-b790d380-3da9-11e9-9737-394d748fcfb8.gif",
+"https://user-images.githubusercontent.com/10780489/53698364-b790d380-3da9-11e9-8b09-68f32ca4a243.gif"];
+var tired = ["https://user-images.githubusercontent.com/10780489/53698375-d1321b00-3da9-11e9-8a25-16dd02b23be3.gif",
+"https://user-images.githubusercontent.com/10780489/53698376-d1321b00-3da9-11e9-80bf-c7cf065aac14.gif"];
+var scared = ["https://user-images.githubusercontent.com/10780489/53698365-bbbcf100-3da9-11e9-9304-b44c907732b1.gif"];
 
 /**
  * Define a function for initiating a conversation on installation
@@ -160,14 +159,14 @@ controller.hears('happy', 'direct_message,mention,direct_mention', function (bot
 });
 });
 
-controller.hears('angry', 'direct_message,mention,direct_mention', function (bot, message) {
-  var pic = getRandomInt(angry.length);
+controller.hears('mad', 'direct_message,mention,direct_mention', function (bot, message) {
+  var pic = getRandomInt(mad.length);
     bot.reply(message, {
       "text": "",
       "attachments": [
     {
         "fields": [],
-        "image_url": angry[pic]
+        "image_url": mad[pic]
     },
 ]
 });
