@@ -85,7 +85,6 @@ if (process.env.TOKEN || process.env.SLACK_TOKEN) {
  * a reconnect policy, and do reconnections automatically. In the meantime, we aren't going to attempt reconnects,
  * WHICH IS A B0RKED WAY TO HANDLE BEING DISCONNECTED. So we need to fix this.
  *
- * TODO: fixed b0rked reconnect behavior
  */
 // Handle events related to the websocket connection to Slack
 controller.on('rtm_open', function (bot) {
@@ -100,7 +99,6 @@ controller.on('rtm_close', function (bot) {
 /**
  * Core bot logic goes here!
  */
-// BEGIN EDITING HERE!
 
 controller.on('bot_channel_join', function (bot, message) {
     bot.reply(message, "I'm here!")
@@ -121,7 +119,7 @@ function getRandomInt(max) {
 /*
 * Function to return a random dog icon
 */
-controller.hears('how are you?', 'direct_mention,direct_message,mention', function (bot, message) {
+controller.hears(['how are you?', 'How are you?'], 'direct_mention,direct_message,mention', function (bot, message) {
   var icon = getRandomInt(icons.length);
   bot.reply(message, {
     "text": "",
@@ -199,23 +197,19 @@ controller.hears('scared', 'direct_message,mention,direct_mention', function (bo
 });
 });
 
-controller.hears('hello', 'direct_message,mention,direct_mention', function (bot, message) {
+controller.hears(['hello', 'Hello'], 'direct_message,mention,direct_mention', function (bot, message) {
     bot.reply(message, 'Hello!');
 });
 
-controller.hears('Whose a good boy?', 'mention,direct_mention,direct_message', function (bot, message) {
+controller.hears(['Whose a good boy?', 'Who\'s a good boy?'], 'mention,direct_mention,direct_message', function (bot, message) {
     bot.reply(message, 'Woof!');
 });
 
-/**
- * AN example of what could be:
- * Any un-handled direct mention gets a reaction and a pat response!
- */
-controller.hears('go', 'direct_message,mention,direct_mention', function (bot, message) {
+controller.hears(['Go', 'GO', 'go'], 'direct_message,mention,direct_mention', function (bot, message) {
     bot.api.reactions.add({
         timestamp: message.ts,
         channel: message.channel,
-        name: 'robot_face'
+        name: 'hugging_face'
     }, function (err) {
         if (err) {
             console.log(err)
